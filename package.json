@@ -1,5 +1,8 @@
 {
   "name": "monoxparser",
   "description": "Tag parser for MonoxBot",
-  "version": "0.01"
+  "version": "0.01",
+  "scripts": {
+    "build": "tsc src/index.ts"
+    "nodejs": "node in
 }
