@@ -1,8 +1,14 @@
 import * as express from 'express';
 import * as Bluebird from 'bluebird';
+import * as dotenv from 'dotenv';
 import { inspect } from 'util';
+import { version } from './package.json';
+import { existsSync } from 'fs';
+
+if (existsSync('./.env') dotenv.load();
 
 class MonoxParser {
+  app: object;
   constructor() {
     this.app = express();
     
@@ -11,9 +17,12 @@ class MonoxParser {
   
   private init() {
     this.app.use('/', (req: express.Request, res: express.Response, next: express.Next) => {
-      return res.status(404).json({"msg": "Not found"});
+      return res.status(404).send('Not found');
       next();
     });
+    
+    this.app.get('/', (req: express.Request, res: express.Response), => 
+      res.send
     
     this.app.get('/method', async (req: express.Request, res: express.Response) => {
       res.status(200).send('Coming soon');
@@ -53,9 +62,9 @@ class MonoxParser {
   
   public async parse(code: string, options?: object) {
     if (code === '' || code.length < 1 || !code) throw new Error('The string must not empty')
-    
+    return code; // I still working on regex thing so this still useless lol.
   }
     
 }
 
-export default new MonoxParser();
+export new MonoxParser();
