@@ -21,8 +21,9 @@ class MonoxParser {
       next();
     });
     
-    this.app.get('/', (req: express.Request, res: express.Response), => 
-      res.send
+    this.app.get('/', (req: express.Request, res: express.Response) => {
+      res.status(200).send(`MonoxParser ${version}`);
+    });
     
     this.app.get('/method', async (req: express.Request, res: express.Response) => {
       res.status(200).send('Coming soon');
