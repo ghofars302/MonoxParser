@@ -50,7 +50,7 @@ class MonoxParser {
     }
   }
   
-  public async parse(code: string) {
+  public async parse(code: string, options?: object) {
     if (code === '' || code.length < 1 || !code) throw new Error('The string must not empty')
     
   }
