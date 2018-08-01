@@ -1,9 +1,26 @@
 {
   "name": "monoxparser",
+  "author": "ghofars302",
   "description": "Tag parser for MonoxBot",
-  "version": "0.01",
+  "version": "0.0.1",
   "scripts": {
-    "build": "tsc src/index.ts",
-    "nodejs": "node"
+    "build": "tsc index.ts",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "9.x.x"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.20",
+    "@types/dotenv": "^4.0.2",
+    "@types/express": "^4.11.1",
+    "@types/node": "^9.4.6",
+    "@types/node-fetch": "^2.1.2",
+    "typescript": "^2.7.2"
   }
 }
