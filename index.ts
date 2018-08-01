@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as Bluebird from 'bluebird';
+import { inspect } from 'util';
 
 class MonoxParser {
   constructor() {
@@ -25,24 +26,32 @@ class MonoxParser {
           bodyText = req.body ? (req.body.text ? res.body.text : '') : undefined;
       }
       
-      if (bodyText === '' || !bodyText) return res.status(400).send('Thr text must not empty');
+      if (bodyText === '' || !bodyText) return res.status(400).send('The text must not empty');
+      
+      const result = await this.eval(bodyText);
+      
+      if (result instanceof Error) return res.status(200).json({"result": "error", "msg": result.message});
+      
+      return res.status(200).json({"result": "ok", "msg": inspect(result).replace(process.env.TOKEN,"TOKEN")})
     })
     
     this.app.listen('3000', () => Console.log('[Parser] API now listen on port 3000'));
   }
   
   public async eval(code: string) {
+    if (code === '' || code.length < 0 || !code) throw new Error('The string must not empty')
+    
     try {
       const result = await eval(code);
       
       return result;
     } catch (error) {
-      throw error
+      return error;
     }
   }
   
   public async parse(code: string) {
-    if (code === '' || code.length < 1) throw new Error('The string must not empty')
+    if (code === '' || code.length < 1 || !code) throw new Error('The string must not empty')
     
   }
     
