@@ -10,15 +10,15 @@ class MonoxParser {
   }
   
   private init() {
-    this.app.use('/', (req, res) => {
+    this.app.use('/', (req: express.Request, res: express.Response), => {
       res.status(404).json({"msg": "Not found"});
     })
     
-    this.app.get('/method', async (req, res) => {
+    this.app.get('/method', async (req: express.Request, res: express.Response) => {
       res.status(200).send('Coming soon');
     })
     
-    this.app.post('/eval', async (req, res) => {
+    this.app.post('/eval', async (req: express.Request, res: express.Response) => {
       if (!res.headers.Authorization || ![process.env.TOKEN1].includes(req.headers.Authorization)) return res.status(401).send('Invalid Authorization token')
       let bodyText;
      
