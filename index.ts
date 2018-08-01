@@ -10,13 +10,14 @@ class MonoxParser {
   }
   
   private init() {
-    this.app.use('/', (req: express.Request, res: express.Response), => {
-      res.status(404).json({"msg": "Not found"});
-    })
+    this.app.use('/', (req: express.Request, res: express.Response, next: express.Next) => {
+      return res.status(404).json({"msg": "Not found"});
+      next();
+    });
     
     this.app.get('/method', async (req: express.Request, res: express.Response) => {
       res.status(200).send('Coming soon');
-    })
+    });
     
     this.app.post('/eval', async (req: express.Request, res: express.Response) => {
       if (!res.headers.Authorization || ![process.env.TOKEN1].includes(req.headers.Authorization)) return res.status(401).send('Invalid Authorization token')
@@ -33,7 +34,7 @@ class MonoxParser {
       if (result instanceof Error) return res.status(200).json({"result": "error", "msg": result.message});
       
       return res.status(200).json({"result": "ok", "msg": inspect(result).replace(process.env.TOKEN,"TOKEN")})
-    })
+    });
     
     this.app.listen('3000', () => Console.log('[Parser] API now listen on port 3000'));
   }
