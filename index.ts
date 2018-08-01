@@ -20,7 +20,7 @@ class MonoxParser {
     });
     
     this.app.post('/eval', async (req: express.Request, res: express.Response) => {
-      if (!res.headers.Authorization || ![process.env.TOKEN1].includes(req.headers.Authorization)) return res.status(401).send('Invalid Authorization token')
+      if (!req.headers['Authorization'] || ![process.env.TOKEN1].includes(req.headers['Authorization'])) return res.status(401).send('Invalid Authorization token')
       let bodyText;
      
       if (res.headers['Content-Type'] === 'application/json') {
