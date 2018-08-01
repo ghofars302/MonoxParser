@@ -36,7 +36,7 @@ class MonoxParser {
       return res.status(200).json({"result": "ok", "msg": inspect(result).replace(process.env.TOKEN,"TOKEN")})
     });
     
-    this.app.listen('3000', () => Console.log('[Parser] API now listen on port 3000'));
+    this.app.listen('3000', () => console.log('[Parser] API now listen on port 3000'));
   }
   
   public async eval(code: string) {
