@@ -4,5 +4,6 @@
   "version": "0.01",
   "scripts": {
     "build": "tsc src/index.ts",
-    "nodejs": "node in
+    "nodejs": "node"
+  }
 }
