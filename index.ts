@@ -5,7 +5,7 @@ import { inspect } from 'util';
 import { version } from './package.json';
 import { existsSync } from 'fs';
 
-if (existsSync('./.env') dotenv.load();
+if (existsSync('./.env')) dotenv.load();
 
 class MonoxParser {
   app: object;
@@ -68,4 +68,4 @@ class MonoxParser {
     
 }
 
-export new MonoxParser();
+export = new MonoxParser();
