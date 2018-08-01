@@ -16,6 +16,8 @@ class MonoxParser {
     this.app.get('/method', async (req, res) => {
       res.status(200).send('Coming soon');
     }
+    
+    this.app.listen('3000', () => Console.log('[Parser] API now listen on port 3000'));
   }
 }
 
