@@ -23,7 +23,7 @@ class MonoxParser {
       if (!req.headers['Authorization'] || ![process.env.TOKEN1].includes(req.headers['Authorization'])) return res.status(401).send('Invalid Authorization token')
       let bodyText;
      
-      if (res.headers['Content-Type'] === 'application/json') {
+      if (req.headers['Content-Type'] === 'application/json') {
           bodyText = req.body ? (req.body.text ? res.body.text : '') : undefined;
       }
       
