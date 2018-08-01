@@ -1,3 +1,8 @@
+declare module "*.json" {
+    const value: any;
+    export default value;
+}
+
 import * as express from 'express';
 import * as Bluebird from 'bluebird';
 import * as dotenv from 'dotenv';
@@ -34,7 +39,7 @@ class MonoxParser {
       let bodyText;
      
       if (req.headers['Content-Type'] === 'application/json') {
-          bodyText = req.body ? (req.body.text ? res.body.text : '') : undefined;
+          bodyText = req.body ? (req.body.text ? req.body.text : '') : undefined;
       }
       
       if (bodyText === '' || !bodyText) return res.status(400).send('The text must not empty');
