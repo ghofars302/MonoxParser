@@ -20,11 +20,6 @@ class MonoxParser {
   }
   
   private init() {
-    this.app.use('/', (req: express.Request, res: express.Response, next: express.Next) => {
-      return res.status(404).send('Not found');
-      next();
-    });
-    
     this.app.get('/', (req: express.Request, res: express.Response) => {
       res.status(200).send(`MonoxParser ${version}`);
     });
