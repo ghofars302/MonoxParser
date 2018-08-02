@@ -29,7 +29,7 @@ class MonoxParser {
     });
     
     this.app.post('/eval', async (req: express.Request, res: express.Response) => {
-      console.log(req)
+      console.log(req.body)
       if (!req.headers['authorization'] || ![process.env.TOKEN1].includes(req.headers['authorization'])) return res.status(401).send('Invalid Authorization token')
       let bodyText;
      
@@ -38,6 +38,7 @@ class MonoxParser {
               const parse = JSON.parse(req.body);
               bodyText = parse.text ? parse.text : ''
           } catch (error) {
+              console.log(error);
               return res.status(400).send('Invalid body format');
           }
       }
