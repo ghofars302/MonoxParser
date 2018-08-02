@@ -32,19 +32,9 @@ class MonoxParser {
     });
     
     this.app.post('/eval', async (req: express.Request, res: express.Response) => {
-      console.log(req.body)
-      if (!req.headers['authorization'] || ![process.env.TOKEN1].includes(req.headers['authorization'])) return res.status(401).send('Invalid Authorization token')
-      let bodyText;
-     
-      if (req.headers['content-type'] === 'application/json') {
-          try {
-              const parse = JSON.parse(req.body);
-              bodyText = parse.text ? parse.text : ''
-          } catch (error) {
-              console.log(error);
-              return res.status(400).send('Invalid body format');
-          }
-      }
+      if (!req.headers['authorization'] || ![process.env.TOKEN1].includes(req.headers['authorization'])) return res.status(401).send('Invalid Authorization token'(;
+      
+      const bodyText = res.body.text ? res.body.text : '';
       
       if (bodyText === '' || !bodyText) return res.status(400).send('The text must not empty');
       
