@@ -6,11 +6,12 @@ declare module "*.json" {
 import * as express from 'express';
 import * as Bluebird from 'bluebird';
 import * as dotenv from 'dotenv';
+import * as BodyParser from 'bodyparser'
 import { inspect } from 'util';
 import { version } from './package.json';
 import { existsSync } from 'fs';
 
-if (existsSync('./.env')) dotenv.load();
+if (existsSync('.env')) dotenv.load();
 
 class MonoxParser {
   app: express
@@ -20,6 +21,8 @@ class MonoxParser {
   }
   
   private init() {
+    this.app.use(BodyParser);
+      
     this.app.get('/', (req: express.Request, res: express.Response) => {
       res.status(200).send(`MonoxParser ${version}`);
     });
