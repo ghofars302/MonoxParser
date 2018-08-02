@@ -6,7 +6,7 @@ declare module "*.json" {
 import * as express from 'express';
 import * as Bluebird from 'bluebird';
 import * as dotenv from 'dotenv';
-import * as BodyParser from 'bodyparser'
+import * as BodyParser from 'body-parser'
 import { inspect } from 'util';
 import { version } from './package.json';
 import { existsSync } from 'fs';
