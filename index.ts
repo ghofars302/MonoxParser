@@ -13,8 +13,9 @@ import { existsSync } from 'fs';
 if (existsSync('./.env')) dotenv.load();
 
 class MonoxParser {
-  app: express();
-  constructor() {   
+  app: express
+  constructor() { 
+    this.app = express();
     this.init();
   }
   
