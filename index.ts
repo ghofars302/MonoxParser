@@ -21,7 +21,7 @@ class MonoxParser {
   }
   
   private init() {
-    this.app.use(BodyParser);
+    this.app.use(BodyParser.json());
       
     this.app.get('/', (req: express.Request, res: express.Response) => {
       res.status(200).send(`MonoxParser ${version}`);
