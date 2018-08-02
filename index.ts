@@ -34,7 +34,12 @@ class MonoxParser {
       let bodyText;
      
       if (req.headers['content-type'] === 'application/json') {
-          bodyText = req.body ? (req.body.text ? req.body.text : '') : undefined;
+          try {
+              const parse = JSON.parse(req.body);
+              bodyText = parse.text ? parse.text : ''
+          } catch (error) {
+              return res.status(400).send('Invalid body format');
+          }
       }
       
       if (bodyText === '' || !bodyText) return res.status(400).send('The text must not empty');
