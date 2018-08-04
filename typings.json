@@ -1,6 +1,0 @@
-{
-  "description": "MonoxBot tag parser written in typescript",
-  "globalDevDependencies": {
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts"
-   }
-}

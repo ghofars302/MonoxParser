@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "outDir": "./built",
+        "lib": [
+            "es2018",
+            "es2015.promise"
+        ],
+    },
+    "include": [
+        "./src/"
+    ]
+}
